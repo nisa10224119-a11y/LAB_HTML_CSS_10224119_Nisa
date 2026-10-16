@@ -1,0 +1,123 @@
+/* type selector */
+body {
+  font-family: Arial, sans-serif;
+  max-width: 960px;
+  margin: 0 auto;
+  line-height: 1.6;
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+/* id selector */
+#header {
+  background-color: #003366;
+  color: #ffffff;
+  padding: 24px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+/* descendant selector */
+nav ul {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* pseudo-class selector */
+nav a:hover {
+  text-decoration: underline;
+  color: #ffcc00;
+}
+
+/* class selector */
+.card {
+  background-color: #ffffff;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+/* grouping selector */
+h1, h2, h3 {
+  margin-top: 0;
+  color: #003366;
+}
+
+#header h1 {
+  color: #ffffff;
+}
+
+/* Tabel */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #e6f0fa;
+}
+
+/* Gambar Responsif */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+/* Form */
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #003366;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #002244;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 0.85rem;
+  padding: 16px;
+  color: #666;
+}
