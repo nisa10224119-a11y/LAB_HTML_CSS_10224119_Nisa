@@ -1,0 +1,141 @@
+/* ==========================================
+   STYLING PROFILE STT CIPASUNG
+   ========================================== */
+
+/* 1. type selector */
+body {
+  font-family: Arial, sans-serif;
+  max-width: 960px;
+  margin: 0 auto;
+  line-height: 1.6;
+  background-color: #f4f6f8;
+  color: #333333;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+/* 2. id selector */
+#about {
+  border-left: 4px solid #003366;
+}
+
+/* 3. class selector */
+.card {
+  background-color: #ffffff;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+/* 4. descendant selector */
+nav ul {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 5. grouping selector */
+h1, h2, h3 {
+  color: #003366;
+  margin-top: 0;
+}
+
+/* 6. pseudo-class selector */
+nav a:hover {
+  text-decoration: underline;
+  color: #0055a5;
+}
+
+/* Header & Navigation Styling */
+header {
+  background-color: #003366;
+  color: #ffffff;
+  padding: 24px 16px;
+  border-radius: 0 0 8px 8px;
+  margin-bottom: 16px;
+}
+
+header h1 {
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+nav {
+  background-color: #e6ecf2;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #003366;
+  font-weight: bold;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+th, td {
+  border: 1px solid #cccccc;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #003366;
+  color: #ffffff;
+}
+
+/* Image Responsiveness */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: 12px;
+}
+
+/* Form Styling */
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #003366;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #002244;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #666666;
+  padding: 16px 0;
+}
