@@ -1,94 +1,104 @@
-# Jawaban Praktikum: 
-Nama    : Nisa Asiah Paujiati Sstani 
-NIM     : 10224119
+# Jawaban Praktikum: <Nama> (<NIM>)
 
 ## Bagian 1: Pemanasan
-1. 
-   - **Selector**: `nav a.active:hover`
-   - **Deklarasi**: `{ color: red; }`
-   - **Property**: `color`
-   - **Value**: `red`
-   - **Pseudo-class**: `:hover` (serta `.active` sebagai class selector / pseudo-class selector)
 
-2. 
-   - **Block**: `<p>`, `<li>`, `<h2>`
-   - **Inline**: `<span>`, `<a>`, `<strong>`
+1. **Anatomi aturan CSS `nav a.active:hover { color: red; }`:**
+   - **Selector:** `nav a.active:hover`
+   - **Pseudo-class:** `:hover` (dan `.active` adalah class selector)
+   - **Deklarasi:** `{ color: red; }`
+   - **Property:** `color`
+   - **Value:** `red`
 
-3. Paragraf yang menjadi hijau adalah **A** dan **B**. 
-   (Sebab selector `.box p` memilih semua elemen `<p>` yang berada di dalam elemen ber-class `box`).
+2. **Sifat default elemen:**
+   - **Block:** `<p>`, `<h2>`, `<li>`
+   - **Inline:** `<span>`, `<a>`, `<strong>`
 
-4. Warna teksnya adalah **merah** (`red`). 
-   **Alasan**: ID selector (`#title`) memiliki nilai *specificity* paling tinggi dibanding class selector (`.heading`) dan element selector (`h1`).
+3. **Jawaban:** **A** dan **B**.
+   - *Penjelasan:* Selector `.box p` memilih semua elemen `<p>` yang berada di dalam elemen ber-class `box` (descendant selector), baik anak langsung maupun keturunan berikutnya. Paragraf C memiliki class `box` (bukan di dalam), sedangkan D berada di luar `.box`.
 
-5. **Kesalahan**: Terjadi kesalahan penutupan tag (*nesting tag* yang salah). Tag `<strong>` dibuka di dalam `<p>`, tetapi ditutup di luar tag `</p>`. Seharusnya dipasang berurutan: `<p>Hello <strong>world</strong></p>`.
+4. **Warnanya: Merah (`red`).**
+   - *Penjelasan:* ID selector (`#title`) memiliki nilai *specificity* paling tinggi (1-0-0) dibandingkan Class selector (`.heading`, specificity 0-1-0) dan Tag selector (`h1`, specificity 0-0-1). Rule dengan specificity tertinggi yang akan diterapkan.
+
+5. **Kesalahan:** Tag saling bertabrakan/tumpang tindih (*overlapping tags / improper nesting*).
+   - *Perbaikan:* `<p>Hello <strong>world</strong></p>` (tag `<strong>` harus ditutup sebelum tag `<p>` ditutup).
 
 ---
 
 ## Bagian 3: Prediksi Selector Golf
-**Prediksi:**
-- **P1.** 
-  (a) "Weekly hack nights." -> **green** (terkena aturan `section p`)
-  (b) "Bring your own laptop." -> **orange** (terkena aturan `.note` karena class lebih spesifik)
-  (c) "© 2026 Student Affairs" -> **blue** (terkena aturan `p` biasa)
-- **P2.** Urutan specificity dari tertinggi ke terendah:
-  1. `#tech p` (1 ID, 1 Element)
-  2. `.club p` (1 Class, 1 Element)
-  3. `main section p` (3 Elements)
-  4. `p` (1 Element)
 
-**Setelah diuji (hasil sebenarnya):**
-- Hasil P1 dan P2 sesuai dengan prediksi. Spesifisitas selector dihitung berdasarkan jumlah ID, Class, dan Element yang digunakan pada aturan CSS.
+- **P1. Prediksi awal:**
+  - (a) "Weekly hack nights.": **green** (karena dipilih oleh `section p`)
+  - (b) "Bring your own laptop.": **orange** (karena dipilih oleh `.note` yang memiliki class specificity lebih tinggi)
+  - (c) "© 2026 Student Affairs": **blue** (pilihan default `p` karena berada di footer, bukan di dalam section)
+
+- **P2. Urutan specificity (tertinggi ke terendah):**
+  1. `#tech p` (1 ID, 1 Element -> 1-0-1)
+  2. `.club p` (1 Class, 1 Element -> 0-1-1)
+  3. `main section p` (3 Elements -> 0-0-3)
+  4. `p` (1 Element -> 0-0-1)
+
+- **Setelah diuji (hasil sebenarnya):**
+  - Prediksi P1 dan P2 100% tepat dan terbukti sesuai dengan aturan specificity di CSS.
 
 ---
 
-## Bagian 4: Box model
-- **Q1 (content-box):** Lebar yang terlihat = `334px`.
-  - **Perhitungan**: `Width` (300px) + `Padding Left/Right` (16px + 16px) + `Border Left/Right` (1px + 1px) = 334px. (Margin tidak dihitung dalam lebar fisik elemen).
-- **Q2 (border-box):** Lebar yang terlihat tetap **300px**. Padding dan border dimasukkan ke dalam total ukuran `width`, sehingga ukuran konten menyusut menjadi `266px` (300 - 32 - 2).
+## Bagian 4: Box Model
+
+- **Q1 (content-box):**
+  - Lebar yang terlihat (*visible width*) = `width` + `padding-left` + `padding-right` + `border-left-width` + `border-right-width`
+  - Perhitungan: $300\text{px} + 16\text{px} + 16\text{px} + 1\text{px} + 1\text{px} = \mathbf{334\text{px}}$.
+
+- **Q2 (border-box):**
+  - Lebar total yang terlihat tetap tepat **300px**. Browser secara otomatis menyesuaikan lebar konten (*content width*) menjadi $300\text{px} - 32\text{px} - 2\text{px} = 266\text{px}$.
+
 - **Pengecekan DevTools:**
-  - Content: `928px` x `...px` (menyesuaikan area main)
-  - Padding: `16px` di seluruh sisi
-  - Border: `1px` di seluruh sisi
-  - Margin: `0px` atas/bawah, `0px` kiri/kanan (margin-bottom: `24px`)
+  - Content: 926px × (tinggi elemen)
+  - Padding: 16px (top, right, bottom, left)
+  - Border: 1px (top, right, bottom, left)
+  - Margin: 0px top/bottom (atau 24px bottom), auto di left/right.
 
 ---
 
-## Bagian 5: Tabel debug
-| # | Baris | Bug | Perbaikan | Cara menemukannya |
+## Bagian 5: Tabel Debug
+
+| # | Baris | Bug | Perbaikan | Cara Menemukannya |
 |---|-------|-----|-----------|-------------------|
-| 1 | 8 | `colour: #333;` salah penulisan property | Ubah menjadi `color: #333;` | Membaca kode / DevTools menyilang property |
-| 2 | 11 | Kurang titik koma `;` setelah `#dbe7f3` | Tambahkan `;` di akhir baris | Membaca kode |
-| 3 | 14 | Selector `.Card` menggunakan huruf kapital | Ubah menjadi `.card` (sesuai class di HTML) | Inspect DevTools / Membaca kode |
-| 4 | 18 | Nilai unit `18 px` ada spasi | Hilangkan spasi menjadi `18px` | DevTools menandai invalid property |
-| 5 | 22 | `text-align: centre;` ejaan salah | Ubah menjadi `text-align: center;` | DevTools menyilang property |
-| 6 | 28 | Tag penutup `</h2>` tidak cocok dengan `<h1>` | Ubah `</h2>` menjadi `</h1>` | W3C Validator |
-| 7 | 31 | Atribut `href="about.html>` kurang tanda kutip penutup | Ubah menjadi `href="about.html"` | W3C Validator |
-| 8 | 38 | Atribut `id="newsList"` tidak sesuai CSS (`#news-list`) | Ubah id menjadi `id="news-list"` | Membaca kode |
-| 9 | 36 | Tag `<img>` tidak memiliki atribut `alt` | Tambahkan `alt="Gambar berita"` | W3C Validator |
+| 1 | 9 | Penulisan property salah (`colour`) | Ganti menjadi `color` | DevTools (property tidak dikenali / invalid) |
+| 2 | 12 | Titik koma hilang setelah `#dbe7f3` | Tambahkan `;` di akhir baris | Membaca kode / Syntax highlighter |
+| 3 | 15 | Case-sensitivity class CSS (`.Card` vs `class="card"`) | Ubah `.Card` menjadi `.card` | Membaca kode (perbandingan CSS dan HTML) |
+| 4 | 19 | Spasi antara angka dan satuan (`18 px`) | Ubah menjadi `18px` | DevTools (value invalid) |
+| 5 | 22 | Ejaan property salah (`text-align: centre`) | Ubah `centre` menjadi `center` | DevTools / CSS Validator |
+| 6 | 27 | Penutup tag tidak cocok (`<h1>...</h2>`) | Ubah `</h2>` menjadi `</h1>` | W3C HTML Validator |
+| 7 | 30 | Tanda petik penutup hilang pada atribut href (`"about.html>`) | Ubah menjadi `href="about.html"` | W3C HTML Validator |
+| 8 | 35 | Tag `<img>` tidak memiliki atribut `alt` | Tambahkan `alt="News Image"` | W3C HTML Validator |
+| 9 | 36 | Mismatch ID antara HTML (`id="newsList"`) dan CSS (`#news-list`) | Ubah ID di HTML jadi `news-list` atau di CSS jadi `#newsList` | Membaca kode / DevTools |
 
 ---
 
 ## Bagian 6: Tabel Code Review
-| # | Baris | Masalah | Mengapa penting | Perbaikan saya |
-|---|-------|---------|-----------------|----------------|
-| 1 | 1 | Tidak ada `<!DOCTYPE html>` dan atribut `lang` | Mengganggu rendering browser dan SEO/Aksesibilitas | Tambahkan `<!DOCTYPE html>` dan `<html lang="id">` |
-| 2 | 5 | Menggunakan lebar tetap `width: 1200px;` | Membuat tampilan tidak responsif di layar kecil | Hapus `width`, gunakan `max-width` dan layout responsif |
-| 3 | 6 | Menggunakan `!important` pada CSS | Merusak hirarki spesifisitas CSS dan sulit di-maintain | Hapus `!important`, gunakan selector yang lebih presisi |
-| 4 | 13-28 | Penggunaan elemen `<div>` secara berlebihan (divitis) | Tidak ada makna semantik bagi screen reader & SEO | Ganti dengan `<header>`, `<nav>`, `<main>`, `<section>`, `<footer>` |
-| 5 | 14 | Menggunakan `<b>` untuk judul | Tidak semantik untuk struktur hirarki halaman | Ganti dengan `<h1>` atau `<h2>` |
-| 6 | 16 | Pembatas menu menggunakan teks `|` | Kurang rapi dan membingungkan screen reader | Gunakan `<ul>` dan `<li>` ditata menggunakan Flexbox |
-| 7 | 20, 24 | Menggunakan inline style `style="font-size:..."` | Menyulitkan maintenance kode dan konsistensi | Pindahkan styling ke kelas CSS |
-| 8 | 21, 23 | Menggunakan `<br>` untuk membuat jarak/spasi | Tag `<br>` hanya untuk jeda baris teks, bukan layout | Gunakan `margin` atau `padding` di CSS |
-| 9 | 26-28 | Kolom input form tidak memiliki `<label>` | Menyulitkan pengguna pengguna screen reader | Tambahkan tag `<label for="...">` pada tiap input |
 
-### Refleksi:
-1. Masalah yang paling sulit disadari hanya dengan melihat browser adalah penggunaan tag non-semantik (seperti `<div>` untuk seluruh elemen) dan ketiadaan atribut `<label>` pada form. Secara visual tampilan tetap terlihat baik, tetapi dari segi struktur dan aksesibilitas sangat buruk.
-2. Meskipun halaman "berfungsi" di browser, masalah ini tetap penting karena memengaruhi keterbacaan kode oleh tim (*maintainability*), peringkat SEO, responsivitas di berbagai perangkat, dan aksesibilitas bagi penyandang disabilitas (*screen reader*).
-3. Satu kebiasaan yang akan saya lakukan adalah selalu menguji HTML melalui **W3C Validator** dan memeriksa responsivitas layout menggunakan **DevTools** sebelum mengumpulkan tugas.
+| # | Baris | Masalah | Mengapa Penting | Perbaikan Saya |
+|---|-------|---------|-----------------|----------------|
+| 1 | 1 | Tag `<!DOCTYPE html>` dan atribut `lang="id"` tidak ada | Browser bisa masuk ke *Quirks Mode* dan merusak rendering | Tambahkan `<!DOCTYPE html><html lang="id">` |
+| 2 | 10-22 | Penggunaan `<div>` berlebihan (*divsoup*) tanpa elemen semantik | Merusak aksesibilitas (screen reader) dan struktur SEO | Ganti dengan `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>` |
+| 3 | 5 | Penggunaan `!important` pada CSS | Menyulitkan pemeliharaan kode (*code maintenance*) dan merusak *cascade* | Hapus `!important`, perbaiki selector specificity |
+| 4 | 4 | Fixed width `width: 1200px` pada header | Membuat layout tidak responsif di layar kecil/HP | Gunakan `max-width: 1200px; width: 100%;` |
+| 5 | 11, 18 | Tidak menggunakan heading semantik (`<h1>`-`<h6>`), hanya `<div>` yang dibold | Screen reader tidak bisa mengenali hierarki struktur dokumen | Gunakan `<h1>` untuk nama kampus dan `<h2>` untuk judul section |
+| 6 | 13 | Menggunakan pemisah Teks `|` pada navigasi | Mengganggu pembacaan *screen reader* | Gunakan daftar semantik `<ul>` / `<li>` styled dengan Flexbox |
+| 7 | 18, 20 | Menggunakan `<br>` untuk mengatur jarak layout | `<br>` hanya untuk perpindahan baris kalimat, bukan spasi layout | Gunakan `margin` atau `padding` CSS |
+| 8 | 21 | Tag `<img>` tidak memiliki atribut `alt` | Aksesibilitas buruk bagi tunanetra dan gambar tidak punya teks alternatif saat error | Tambahkan atribut `alt` yang deskriptif |
+| 9 | 23-25 | Elemen form (`<input>`) tidak menggunakan `<label>` | Pengguna tidak tahu fungsi input secara pasti & buruk untuk aksesibilitas | Bungkus/hubungkan dengan atribut `<label for="...">` |
+
+### Refleksi
+
+1. **Masalah yang paling sulit disadari:** Penggunaan elemen non-semantik (seperti `<div>` sebagai ganti `<header>` atau `<h2>`). Halaman terlihat normal di browser desktop, tetapi struktur datanya rusak bagi *screen reader* dan mesin pencari.
+2. **Mengapa penting diperbaiki:** Kode yang sekadar "berfungsi" belum tentu aksesibel, responsif, ramah SEO, atau mudah dirawat oleh tim developer di masa depan.
+3. **Kebiasaan sebelum mengumpulkan:** Selalu menjalankan kode melalui W3C Markup Validator dan melakukan pengujian *DevTools audit/accessibility* serta pengujian di berbagai ukuran layar.
 
 ---
 
-## Bagian 7: Exit ticket
-1. Anatomi aturan CSS terdiri dari **Selector** (elemen yang dituju), diikuti oleh blok deklarasi dalam kurung kurawal `{}`. Di dalamnya terdapat satu atau lebih **Property** (sifat yang ingin diubah) dan **Value** (nilai perubahan) yang dipisahkan oleh tanda titik dua `:` serta diakhiri titik koma `;`.
-2. *(Tuliskan topik yang menurutmu masih agak membingungkan, contoh: Perhitungan spesifisitas selector CSS yang kompleks).*
-3. Menulis kerangka dasar HTML5 semantik beserta pembuatan form dan tabel tanpa perlu mencari contoh di internet.
+## Bagian 7: Exit Ticket
+
+1. **Anatomi aturan CSS:** Terdiri dari **Selector** (elemen yang ditargetkan), dibuka dengan kurung kurawal `{}` yang berisi satu atau lebih **Deklarasi**. Setiap deklarasi terdiri dari **Property** (sifat yang diubah) dan **Value** (nilai perubahan), diakhiri dengan titik koma `;`.
+2. **Konsep yang masih membingungkan:** Menghitung nilai spesifik *Specificity* pada kombinasi pseudo-class dan attribute selector yang kompleks.
+3. **Hal yang bisa dilakukan tanpa melihat catatan:** Membuat struktur dasar dokumen HTML5 (`<!DOCTYPE html>`, `<head>`, `<body>`), menggunakan tag semantik dasar, dan mengatur layout horizontal sederhana menggunakan Flexbox.

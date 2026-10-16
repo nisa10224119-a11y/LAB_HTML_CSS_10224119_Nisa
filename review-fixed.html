@@ -3,55 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>STT Cipasung</title>
+  <title>STT Cipasung - Profile</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 960px;
-      margin: 0 auto;
+      margin: 0;
+      padding: 0;
       color: #333333;
-      line-height: 1.6;
     }
+    
     header {
       background-color: #003366;
       color: white;
       padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    header h1 {
-      margin: 0;
-      color: white;
+
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 32px;
     }
+
     nav ul {
-      display: flex;
-      gap: 15px;
       list-style: none;
       padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
     }
+
     nav a {
       color: #cccccc;
       text-decoration: none;
     }
+
     nav a:hover {
       text-decoration: underline;
     }
+
     main {
-      padding: 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
     }
+
+    section {
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #003366;
+    }
+
     img {
       max-width: 100%;
       height: auto;
+      margin-top: 15px;
     }
-    .form-group {
+
+    form p {
       margin-bottom: 12px;
     }
+
     label {
       display: block;
       margin-bottom: 4px;
     }
+
+    input[type="text"],
+    input[type="email"] {
+      padding: 8px;
+      width: 100%;
+      max-width: 400px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 8px 16px;
+      background-color: #003366;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
     footer {
+      background-color: #f4f4f4;
       text-align: center;
-      padding: 10px;
-      font-size: 0.9rem;
+      padding: 15px;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -61,9 +102,9 @@
     <h1>STT Cipasung</h1>
     <nav>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Programs</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -72,27 +113,29 @@
     <section>
       <h2>About Us</h2>
       <p>STT Cipasung is a technology college in Tasikmalaya.</p>
-      <img src="https://placehold.co/600x300?text=STT+Cipasung" alt="STT Cipasung Campus">
+      <img src="https://placehold.co/600x300?text=STT+Cipasung" alt="STT Cipasung Campus Image">
     </section>
 
-    <section>
+    <section id="contact">
       <h2>Contact Us</h2>
       <form action="#" method="post">
-        <div class="form-group">
-          <label for="rev-name">Name</label>
-          <input type="text" id="rev-name" placeholder="Name">
-        </div>
-        <div class="form-group">
-          <label for="rev-email">Email</label>
-          <input type="email" id="rev-email" placeholder="Email">
-        </div>
-        <button type="submit">Send</button>
+        <p>
+          <label for="review-name">Name:</label>
+          <input type="text" id="review-name" name="name" placeholder="Name" required>
+        </p>
+        <p>
+          <label for="review-email">Email:</label>
+          <input type="email" id="review-email" name="email" placeholder="Email" required>
+        </p>
+        <p>
+          <button type="submit">Send</button>
+        </p>
       </form>
     </section>
   </main>
 
   <footer>
-    <p>Copyright 2026</p>
+    <p>&copy; Nisa Asiah 2026 STT Cipasung</p>
   </footer>
 
 </body>
